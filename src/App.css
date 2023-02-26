@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.App {
+    padding: 40px;
+    background-color: #FFFFFF;
+    font-family: 'Tilt Neon', cursive;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  h1 {
+    text-transform: uppercase;
+    font-size: 32px;
+    color: #212121;
+    font-style: normal;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+  }
+
+  .description {
+    font-size: 16px;
+    color: #5A5A65;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1px;
+    font-weight: 400;
+  }
+
+  .cardContainerGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    background: #FFF;
+    border-radius: 12px;
+    margin-top: 30px;
+    gap: 10px;
+  }
+
+  
+  @media (max-width: 800px) {
+    h1 {
+        font-size: 26px;
+    }
+    .description {
+        font-size: 14px;
+    }
+  }
+
+  .gray-out {
+    pointer-events: none;
+  }

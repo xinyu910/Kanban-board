@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+* {
+  box-sizing: border-box 
+}
+
+.add-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #5781aa;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .add-button:hover {
+    background-color: #8398ad;
+  }
+  
+  .add-button::before {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .TaskForm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .TaskForm {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:#fff;
+    border-radius: 10px;
+    padding: 35px;
+    width: 350px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-family: 'Tilt Neon', cursive
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .TaskForm h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .TaskForm label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  .TaskForm select,
+  .TaskForm input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: inherit;
+    margin-bottom: 18px;
+  }
+  
+  .TaskForm .submit {
+    font-size: 16px;
+    padding: 8px 16px;
+    margin-left: 8px;
+    border-radius: 4px;
+    border: none;
+    background-color: #5781aa;
+    color: #FFFFFF;
+    cursor: pointer;
+    width: 100px;
+    height: 38px;
+    margin: auto;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+    color: #aaa;
+  }
