@@ -11,7 +11,9 @@ interface column {
 }
 
 const App: React.FC = () => {
+  //to toggle the visibility of the add form
   const [isFormVisible, setIsFormVisible] = useState<boolean>(false);
+  //initial data values
   const initialColumns: column = {
     "Todo": {
       title: 'Todo',
@@ -32,8 +34,14 @@ const App: React.FC = () => {
   }
   const [columns, setColumns] = useState(initialColumns)
 
+  //handle close form and add functionality upon form submission
+  const handleFormSubmit = (category: string, description: string) => {
+    setIsFormVisible(false);
+    handleAdd(category, description)
+  }
+
+  //handle add functionality
   const handleAdd = (category: string, description: string) => {
-    console.log(columns[category]);
     const newList = columns[category]['list'];
       newList.push({id: uuidv4(), text: description});
       const newColumn = {
@@ -43,23 +51,20 @@ const App: React.FC = () => {
       setColumns({...columns, [category]: newColumn});
   }
 
+  //Show add form
   const handleButtonClick = () => {
     setIsFormVisible(true);
   }
 
-  const handleFormSubmit = (category: string, description: string) => {
-    setIsFormVisible(false);
-    handleAdd(category, description)
-  }
-
+  //handle form close
   const handleFormClose = () => {
     setIsFormVisible(false);
   }
 
+  //handle the removal of a task item
   const handleRemove = (id: string, category: string) => {
     const newList = columns[category]['list'].filter(
       (object: any, idx: number) => object.id !== id);
-    console.log(newList);
     const newColumn = {
       title: category,
       list: newList

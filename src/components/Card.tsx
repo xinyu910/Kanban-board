@@ -9,6 +9,7 @@ interface CardProps {
   onDelete: (id: string) => void;
 }
 
+//calling the onDelete method passed from CardContainer
 const Card = ({description, index, id, onDelete}: CardProps) => {
   const handleClick = () => {
     onDelete(id);

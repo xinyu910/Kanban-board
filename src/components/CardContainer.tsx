@@ -12,10 +12,12 @@ interface containerProps{
 }
 
 const CardContainer = ({col: { list, title }, handleRemove }: containerProps) => {
+  //calling the handleRemove method passed from App.tsx
   const handleDelete = (id: string) => {
     handleRemove(id, title);
   };
 
+  //customize label color
   const getBackgroundColor = (title: string) =>{
     switch (title) {
       case "Todo":
