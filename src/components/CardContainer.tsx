@@ -1,5 +1,4 @@
 import React from 'react'
-import { Droppable } from 'react-beautiful-dnd'
 import Card from './Card'
 import "./Cards.css"
 import {StrictModeDroppable} from "./Droppable";
@@ -9,7 +8,7 @@ interface containerProps{
     title: string
     list: any[]
   }
-  handleRemove: (id: string, title: string) => void;
+  handleRemove: (id: string, category: string) => void;
 }
 
 const CardContainer = ({col: { list, title }, handleRemove }: containerProps) => {

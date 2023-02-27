@@ -7,7 +7,7 @@ interface TaskFormProps {
 }
 
 const AddForm = ({onSubmit, onClose}: TaskFormProps) => {
-    const [category, setCategory] = useState<string>('todo');
+    const [category, setCategory] = useState<string>('Todo');
     const [description, setDescription] = useState<string>('');
 
     const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -21,7 +21,7 @@ const AddForm = ({onSubmit, onClose}: TaskFormProps) => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         onSubmit(category, description);
-        setCategory('todo');
+        setCategory('Todo');
         setDescription('');
     }
   
@@ -36,10 +36,10 @@ const AddForm = ({onSubmit, onClose}: TaskFormProps) => {
           <h2>Add a Task</h2>
           <label htmlFor="category">Category:</label>
           <select id="category" value={category} onChange={handleCategoryChange} required>
-              <option value="todo">Todo</option>
-              <option value="in-progress">In Progress</option>
-              <option value="blocked">Blocked</option>
-              <option value="done">Done</option>
+              <option value="Todo">Todo</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Blocked">Blocked</option>
+              <option value="Done">Done</option>
           </select>
           <label htmlFor="description">Description:</label>
           <input type="text" id="description" value={description} placeholder="Enter task description here" 

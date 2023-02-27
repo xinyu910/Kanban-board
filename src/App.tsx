@@ -3,7 +3,7 @@ import "./App.css";
 import AddButton from './components/AddButton';
 import AddForm from './components/AddForm';
 import CardContainer from './components/CardContainer';
-import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
+import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import {v4 as uuidv4} from 'uuid';
 
 interface column {
@@ -33,40 +33,16 @@ const App: React.FC = () => {
   const [columns, setColumns] = useState(initialColumns)
 
   const handleAdd = (category: string, description: string) => {
-    if (category === "todo") {
-      const newList = columns["Todo"]['list'];
+    console.log(columns[category]);
+    const newList = columns[category]['list'];
       newList.push({id: uuidv4(), text: description});
       const newColumn = {
-        title: 'Todo',
+        title: category,
         list: newList
       }
-      setColumns({...columns, "Todo": newColumn});
-    } else if (category === "in-progress") {
-      const newList = columns["In Progress"]['list'];
-      newList.push({id: uuidv4(), text: description});
-      const newColumn = {
-        title: 'In Progress',
-        list: newList
-      }
-      setColumns({...columns, "In Progress": newColumn});
-    } else if (category === "blocked") {
-      const newList = columns["Blocked"]['list'];
-      newList.push({id: uuidv4(), text: description});
-      const newColumn = {
-        title: 'Blocked',
-        list: newList
-      }
-      setColumns({...columns, "Blocked": newColumn});
-    } else {
-      const newList = columns["Done"]['list'];
-      newList.push({id: uuidv4(), text: description});
-      const newColumn = {
-        title: 'Done',
-        list: newList
-      }
-      setColumns({...columns, "Done": newColumn});
-    }
+      setColumns({...columns, [category]: newColumn});
   }
+
   const handleButtonClick = () => {
     setIsFormVisible(true);
   }
@@ -80,53 +56,24 @@ const App: React.FC = () => {
     setIsFormVisible(false);
   }
 
-  const handleRemove = (id: string, title: string) => {
-    if (title === "Todo") {
-      const newList = columns["Todo"]['list'].filter(
-        (object: any, idx: number) => object.id !== id);
-      const newColumn = {
-        title: 'Todo',
-        list: newList
-      }
-      setColumns({...columns, "Todo": newColumn});
-    } else if (title === "In Progress") {
-      const newList = columns["In Progress"]['list'].filter(
-        (object: any, idx: number) => object.id !== id);
-      const newColumn = {
-        title: 'In Progress',
-        list: newList
-      }
-      setColumns({...columns, "In Progress": newColumn});
-    } else if (title === "Blocked") {
-      const newList = columns["Blocked"]['list'].filter(
-        (object: any, idx: number) => object.id !== id);
-      const newColumn = {
-        title: 'Blocked',
-        list: newList
-      }
-      setColumns({...columns, "Blocked": newColumn});
-    } else {
-      const newList = columns["Done"]['list'].filter(
-        (object: any, idx: number) => object.id !== id);
-      const newColumn = {
-        title: 'Done',
-        list: newList
-      }
-      setColumns({...columns, "Done": newColumn});
+  const handleRemove = (id: string, category: string) => {
+    const newList = columns[category]['list'].filter(
+      (object: any, idx: number) => object.id !== id);
+    console.log(newList);
+    const newColumn = {
+      title: category,
+      list: newList
     }
+    setColumns({...columns, [category]: newColumn});
   }
   
   //drag and drop partially follow this tutorial:
   //https://dev.to/imjoshellis/codealong-multi-column-drag-and-drop-in-react-3781
   const onDragEnd = ({ source, destination, draggableId }: DropResult) => {
     if (destination === undefined || destination === null) return null
-    console.log(source);
-    console.log(destination);
 
     if (source.droppableId === destination.droppableId &&
       source.index === destination.index) return null
-
-    const s: string = source.droppableId;
 
     // Set start droppable and end droppable column values
     const start: any = columns[source.droppableId];
